@@ -68,6 +68,7 @@ if (menu_x > gui_width+150 && menu_committed != -1)
 				var room_target = file_text_read_real(file);
 				global.kills = file_text_read_real(file);
 				global.hasGun = file_text_read_real(file);
+				global.gunBlood = file_text_read_real(file);
 				file_text_close(file);
 				SlideTransition(TRANS_MODE.GOTO, room_target );
 			}

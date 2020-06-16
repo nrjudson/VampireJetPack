@@ -23,16 +23,17 @@ else
 
 // FiringDelay makes it so we only shoot a bullet every 5 frames or so
 // So it acts like a timer until we can fire again
-firingDelay = firingDelay - 1;
+firingDelay = max(0, firingDelay - 1);
 
 // Reduce recoil by 1 or keep it at 0
 recoil = max(0, recoil - 1);
 
 // Fire the gun on mouse click
 if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
-	&& ammo > 1 && firingDelay < 0 )
+	&& global.gunBlood >= bloodUsedPerShot && firingDelay <= 0 )
 {
-	firingDelay = 45;
+	firingDelay = initFiringDelay; // Reset the number of frames to delay shooting again
+	global.gunBlood -= bloodUsedPerShot;
 	recoil = 4;
 	
 	ScreenShake(2, 10);
@@ -45,7 +46,7 @@ if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 	{
 		// Because of the WITH statement, everything in here is referring to the bullet
 		// (except other, that's the gun)
-		spd = 25;
+		spd = 35;
 		direction = other.image_angle + random_range(-3, 3); // Give the bullets some spread.
 		image_angle = direction;
 	}

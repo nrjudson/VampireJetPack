@@ -12,6 +12,8 @@ killTextScale = 1;
 
 global.hasGun = false;
 
+global.gunBlood = 400;
+
 
 // PARTICLES
 // Init
