@@ -1,0 +1,2 @@
+nearby = false;
+
