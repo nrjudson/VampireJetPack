@@ -14,4 +14,6 @@ canJump = 0;
 gunKickX = 0;
 gunKickY = 0;
 
+eating = false;
+
 audio_sound_pitch(snShot, 0.8);

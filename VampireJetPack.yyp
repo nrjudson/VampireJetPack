@@ -191,6 +191,14 @@
             }
         },
         {
+            "Key": "3cfa9a5b-821c-4916-9e09-0f2a5b2d4646",
+            "Value": {
+                "id": "c665132e-c39a-41a8-82e9-050ee8821dd2",
+                "resourcePath": "sprites\\sPlayerEat\\sPlayerEat.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "3d6f2ca6-adb8-4cce-a414-72f29d4d5356",
             "Value": {
                 "id": "3abd9eee-c343-4f6d-b661-537ad6c13f61",
@@ -347,6 +355,14 @@
             "Value": {
                 "id": "bbc0d05a-b659-4127-884d-d694001cf373",
                 "resourcePath": "sprites\\sEnemyA\\sEnemyA.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "7b849ac4-4283-4801-88e0-b7be6a2607e0",
+            "Value": {
+                "id": "1b30731f-d358-4c48-a80b-63ede1339a49",
+                "resourcePath": "sprites\\sEnemyDEaten\\sEnemyDEaten.yy",
                 "resourceType": "GMSprite"
             }
         },

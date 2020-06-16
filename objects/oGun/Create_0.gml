@@ -10,7 +10,7 @@ controllerAngle = 0;
 // Use blood for ammo
 //global.gunBlood;
 bloodUsedPerShot = 50;
-maxBlood = 500;
+//maxBlood = 500;
 //maxBlood = 100;
 //ammo = 100;
 

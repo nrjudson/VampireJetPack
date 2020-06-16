@@ -1,5 +1,11 @@
 /// @description Every frame
 
+if (eating)
+{
+	sprite_index = sPlayerEat;
+	return;
+}
+
 if (has_control)
 {
 	// Get player input
