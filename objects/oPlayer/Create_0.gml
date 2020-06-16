@@ -2,7 +2,7 @@
 
 hsp = 0;
 vsp = 0;
-grv = 10;//0.3;
+grv = 0.3;
 walksp = 4;
 
 controller = 1; // Controller use on or off. Gets turned off if the keyboard is used.
