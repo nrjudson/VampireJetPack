@@ -32,16 +32,22 @@ if (done == 0)
 	y = y + vsp;
 }
 
+// Doing a bunch of stuff that rely's on the player below...
+if (!instance_exists(oPlayer))
+{
+	return;
+}
+
+var player = instance_find(oPlayer, 0);
+
 // If the player is close to this guy he can eat him
-if (point_in_circle(oPlayer.x, oPlayer.y, x, y, 64) && !beingEaten && !eaten)// && !instance_exists(oText))
+if (point_in_circle(player.x, player.y, x, y, 64) && !beingEaten && !eaten && !player.eating)
 {
 	nearby = true;
 	if (keyboard_check_pressed(ord("S")))
 	{
-		beingEaten = true;
-		var player = instance_find(oPlayer, 0);
+		beingEaten = true;		
 		player.eating = true;
-		//player.sprite_index = sPlayerEat;
 		
 		// if we were just in the air, then play a sfx now that we landed
 		audio_sound_pitch(snDeath, choose(0.4, 0.6, 0.8)); // adjust pitch randomly slightly
@@ -59,8 +65,7 @@ if (beingEaten)
 	{
 		beingEaten = false;
 		eaten = true;
-		var player = instance_find(oPlayer, 0);
-		//player.sprite_index = sPlayer;
+		//var player = instance_find(oPlayer, 0);
 		player.eating = false;
 		sprite_index = sEnemyDEaten;
 		global.gunBlood = min(global.maxBlood, global.gunBlood+100);

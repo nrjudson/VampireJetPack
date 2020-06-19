@@ -1,5 +1,5 @@
 /// @description Control menu
-#macro SAVEFILE "Save.sav"
+
 
 // Ease the items from the right side of the screen
 menu_x += (menu_x_target - menu_x) / menu_speed;
@@ -57,21 +57,7 @@ if (menu_x > gui_width+150 && menu_committed != -1)
 		case 2: SlideTransition(TRANS_MODE.NEXT); break;
 		case 1: 
 		{
-			if (!file_exists(SAVEFILE))
-			{
-				// Save file doesn't exist, just start a new game
-				SlideTransition(TRANS_MODE.NEXT);
-			}
-			else
-			{
-				var file = file_text_open_read(SAVEFILE);
-				var room_target = file_text_read_real(file);
-				global.kills = file_text_read_real(file);
-				global.hasGun = file_text_read_real(file);
-				global.gunBlood = file_text_read_real(file);
-				file_text_close(file);
-				SlideTransition(TRANS_MODE.GOTO, room_target );
-			}
+			LoadLastSave();
 		}
 		break;
 		case 0: game_end(); break;

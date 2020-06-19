@@ -46,7 +46,7 @@ if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 	{
 		// Because of the WITH statement, everything in here is referring to the bullet
 		// (except other, that's the gun)
-		spd = 35;
+		spd = 15;
 		direction = other.image_angle + random_range(-3, 3); // Give the bullets some spread.
 		image_angle = direction;
 	}

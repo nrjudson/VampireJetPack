@@ -1,3 +1,3 @@
-/// @description ?
+/// @description Nothing?
 
-global.killsThisRoom = 0;
+//global.killsThisRoom = 0;
