@@ -53,7 +53,7 @@ if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 	
 	with (oPlayer)
 	{
-		gunKickX = lengthdir_x(1.5, other.image_angle - 180);
+		gunKickX = lengthdir_x(1, other.image_angle - 180);
 		gunKickY = lengthdir_y(1, other.image_angle - 180);
 	}
 }

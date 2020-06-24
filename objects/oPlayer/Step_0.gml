@@ -3,6 +3,7 @@
 if (eating)
 {
 	sprite_index = sPlayerEat;
+	image_speed = 1;
 	return;
 }
 
@@ -39,84 +40,106 @@ else
 
 
 // Calculate movement
-var move = key_right - key_left;
-//if (key_down)
-//	move = 0;
+var move = key_right - key_left; // -1 or 1
+//if (key_down) 
+//	move = 0; // ... or 0
 
 var inTheAir = !place_meeting(x, y+1, oWall);
+
+var movingFasterThanRunning = true;
+	if (abs(hsp) <= maxsp)
+		movingFasterThanRunning = false;
 
 // In the air vertical movement (after getting jetpack)
 //if (global.hasJetpack && inTheAir)
 if (inTheAir)
 {
-	//if (move != 0)
-	//{
-	//	var oldHsp = hsp;
-	//	hsp = move*walksp;
-		
-	//	if (sign(gunKickX) == sign(move))
-	//	{
-	//		hsp = oldHsp + 
-	//	}
-	//}
-	
+	// Process keyboard movements
 	if (key_down)
 	{
-		hsp = 0;	
+		// Pressing down always means slow down
+		// And if we're close enough to 0, just go to zero
+		if (abs(hsp) - walksp <= 0)
+			hsp = 0;
+		else
+			hsp += walksp * -sign(hsp);
 	}
 	else if (move == 0)
 	{
-		hsp = hsp + gunKickX;
+		// Very slow air resistance stop
+		if (abs(hsp) - airResistSp <= 0)
+			hsp = 0;
+		else
+			hsp += airResistSp * -sign(hsp);
 	}
-	else if (abs(hsp) >= abs(move*walksp) && sign(hsp) != sign(move))
+	else if (sign(hsp) != move)
 	{
-		// If we are moving >= walkspeed and move is in the opposite direction
-		// Disregard hsp and apply walksp to other direction
-		// Allows player to change directions quickly in midair without jetpack
-		hsp = move*walksp + gunKickX;
+		// We're trying to move in the opposite direction
+		// Slow down mid-air- don't change direction instantly
+		hsp += (walksp*move);
 	}
-	else if (abs(hsp) >= abs(move*walksp))
+	else if (sign(hsp) == move && !movingFasterThanRunning)
 	{
-		// If we're moving >= walkspeed and move is in the same direction
-		// Don't apply move
-		hsp = hsp + gunKickX;
-
-	}
-	else if (abs(hsp) < abs(move*walksp) && sign(hsp) == sign(move))
-	{
-		// If we're moving slower than our walkspeed and move is in the same direction
-		// Adjust our midair speed to match that of walksp
-		hsp = move*walksp + gunKickX;
-	}
-	else if (abs(hsp) >= abs(move*walksp) && sign(hsp) == sign(move))
-	{
-		// If we're moving slower than our walkspeed and move in is the opposite direction
-		hsp = hsp + (move*walksp) + gunKickX;
-	}
-	else
-	{
-		hsp = hsp + move*walksp + gunKickX;
+		// We're slower than our max running speed
+		// And we're trying to go faster in the same direction
+		hsp += (walksp*move);
+		if (hsp > maxsp)
+			hsp = maxsp;
+		else if (hsp < -maxsp)
+			hsp = -maxsp;
 	}
 	
-	// Set max hsp in either direction
-	if (hsp > 10) hsp = 10;
-	if (hsp < -10) hsp = -10;
+	//Now add the gunkick
+	hsp += gunKickX;
 }
-// In the air vertical movement (before getting jetpack)
-//else if (!global.hasJetpack && inTheAir) 
-//{
-//	hsp = (move * walksp) + gunKickX;
-//}
 // On the ground
 else
 {
-	hsp = (move * walksp) + gunKickX;
+	if (move == 0 || key_down)
+	{
+		// Slow down code. Same as above for in the air.
+		if (abs(hsp) - walksp <= 0)
+			hsp = 0;
+		else
+			hsp += walksp * -sign(hsp);
+	}
+	else
+	{
+		// Move in a direction faster (if not up to running speed)
+		hsp += (walksp * move);
+		if (!movingFasterThanRunning && hsp > maxsp)
+		{
+			hsp = maxsp;
+		}
+		else if (!movingFasterThanRunning && hsp < -maxsp)
+		{
+			hsp = -maxsp;
+		}
+		// Slow down to max ground speed
+		if (abs(hsp) - maxsp > 0)
+			hsp = sign(hsp) * maxsp;
+		//else
+		//	hsp += walksp * -sign(hsp); // Ground-induced drag
+	}
+	
+	hsp += gunKickX;
+	
+	//hsp = (move * walksp) + gunKickX;
 }
+// Set max hsp in either direction
+if (hsp > maxAirSpeed) 
+	hsp = maxAirSpeed;
+if (hsp < -maxAirSpeed) 
+	hsp = -maxAirSpeed;
 gunKickX = 0;
 
-
+// Vertical movement. (Much simpler)
 vsp = (vsp + grv) + gunKickY;
-vsp = max(-10, vsp); // Set maximum jetpack upward speed
+// Set max vsp in either direction
+if (vsp > maxAirSpeed) 
+	vsp = maxAirSpeed;
+if (vsp < -maxAirSpeed) 
+	vsp = -maxAirSpeed;
 gunKickY = 0;
 
 // Jumping
@@ -176,7 +199,7 @@ else // Player is on the ground
 	canJump = 10; // 10 frames left to jump
 	if (sprite_index == sPlayerA) 
 	{
-		
+		// Player WAS just in the air, so he's landing
 		// Make some dust appear under the player when they land
 		var dustBits = 5;
 		if (key_down)
@@ -211,9 +234,4 @@ else // Player is on the ground
 			sprite_index = sPlayerRb; // Run backwards
 	}
 }
-
-// Removed when we started using strafe animations
-//if (sign(hsp) != 0) // If we're moving
-//	image_xscale = sign(hsp); // Flip player image left or right accordingly
-	
 

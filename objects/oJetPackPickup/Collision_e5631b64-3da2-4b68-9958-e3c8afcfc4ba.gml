@@ -1,4 +1,4 @@
-if (global.killsThisRoom == 1)
+if (visible)
 {
 	// Equip the gun
 	global.hasJetpack = true;

@@ -17,4 +17,5 @@ game_set_speed(30, gamespeed_fps); // Cheapest hackiest slowmo effect
 with (oCamera) follow = other.id;
 	
 with (oGame) killTextScale = 2;
-global.deaths++;
+
+//global.deaths++; // this won't do anything because the last save is loaded right after

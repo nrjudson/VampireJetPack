@@ -15,6 +15,7 @@ else
 	global.gunBlood = file_text_read_real(file);
 	global.deaths = file_text_read_real(file);
 	global.hasJetpack = file_text_read_real(file);
+	global.killsThisRoom = 0;
 	file_text_close(file);
 	SlideTransition(TRANS_MODE.GOTO, room_target );
 }
