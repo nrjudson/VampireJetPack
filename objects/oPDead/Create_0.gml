@@ -14,6 +14,7 @@ audio_play_sound(snDeath, 10, false);
 
 game_set_speed(30, gamespeed_fps); // Cheapest hackiest slowmo effect
 
-with (oCamera) 
-	follow = other.id;
+with (oCamera) follow = other.id;
 	
+with (oGame) killTextScale = 2;
+global.deaths++;

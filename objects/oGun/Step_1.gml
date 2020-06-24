@@ -47,7 +47,7 @@ if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 		// Because of the WITH statement, everything in here is referring to the bullet
 		// (except other, that's the gun)
 		spd = 15;
-		direction = other.image_angle + random_range(-3, 3); // Give the bullets some spread.
+		direction = other.image_angle;// + random_range(-3, 3); // Give the bullets some spread.
 		image_angle = direction;
 	}
 	
@@ -55,6 +55,26 @@ if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 	{
 		gunKickX = lengthdir_x(1.5, other.image_angle - 180);
 		gunKickY = lengthdir_y(1, other.image_angle - 180);
+	}
+}
+
+if (global.hasJetpack && (mouse_check_button(mb_right) || gamepad_button_check(0, gp_shoulderlb))
+	&& global.gunBlood >= bloodUsedPerFrameJetpack)
+{
+	global.gunBlood -= bloodUsedPerFrameJetpack;
+	with (oPlayer)
+	{
+		gunKickX = lengthdir_x(1, other.image_angle - 180);
+		gunKickY = lengthdir_y(1, other.image_angle - 180);
+	}
+	// Create the bullet in the Bullets layer
+	with (instance_create_layer(x, y, "Bullets", oBloodBullet))
+	{
+		// Because of the WITH statement, everything in here is referring to the bullet
+		// (except other, that's the gun)
+		spd = 15;
+		direction = other.image_angle;// + random_range(-3, 3); // Give the bullets some spread.
+		image_angle = direction;
 	}
 }
 

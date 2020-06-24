@@ -8,6 +8,8 @@
         "e6f6ebc0-0855-4fd8-a29d-a3f48004b329",
         "e12f5523-a64c-44f1-b0b9-21c960f21034",
         "23326356-1474-45ab-a7c5-c0634fcbd69f",
+        "f7b410a2-7ffd-4df1-874e-6b404b0b113f",
+        "70ee8017-6037-42e9-bcf5-94a0ecd33a03",
         "24c8b215-9961-42bb-9e48-310e7bbe3bba"
     ],
     "filterType": "GMRoom",

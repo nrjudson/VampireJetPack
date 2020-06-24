@@ -10,8 +10,10 @@ display_set_gui_size(RES_W, RES_H);
 global.kills = 0;
 global.killsThisRoom = 0;
 killTextScale = 1;
+global.deaths = 0;
 
 global.hasGun = false;
+global.hasJetpack = false;
 
 global.gunBlood = 400;
 global.maxBlood = 500;

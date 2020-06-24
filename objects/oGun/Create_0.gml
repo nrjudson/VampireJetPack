@@ -13,6 +13,7 @@ bloodUsedPerShot = 50;
 //maxBlood = 500;
 //maxBlood = 100;
 //ammo = 100;
+bloodUsedPerFrameJetpack = 1;
 
 if (global.hasGun == false)
 	instance_destroy();

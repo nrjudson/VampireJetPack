@@ -40,11 +40,68 @@ else
 // Calculate movement
 var move = key_right - key_left;
 
-hsp = (move * walksp) + gunKickX;
+var inTheAir = !place_meeting(x, y+1, oWall);
+
+if (inTheAir)
+{
+	//if (move != 0)
+	//{
+	//	var oldHsp = hsp;
+	//	hsp = move*walksp;
+		
+	//	if (sign(gunKickX) == sign(move))
+	//	{
+	//		hsp = oldHsp + 
+	//	}
+	//}
+	
+	if (move == 0)
+	{
+		hsp = hsp + gunKickX;
+	}
+	else if (abs(hsp) >= abs(move*walksp) && sign(hsp) != sign(move))
+	{
+		// If we are moving >= walkspeed and move is in the opposite direction
+		// Disregard hsp and apply walksp to other direction
+		// Allows player to change directions quickly in midair without jetpack
+		hsp = move*walksp + gunKickX;
+	}
+	else if (abs(hsp) >= abs(move*walksp))
+	{
+		// If we're moving >= walkspeed and move is in the same direction
+		// Don't apply move
+		hsp = hsp + gunKickX;
+
+	}
+	else if (abs(hsp) < abs(move*walksp) && sign(hsp) == sign(move))
+	{
+		// If we're moving slower than our walkspeed and move is in the same direction
+		// Adjust our midair speed to match that of walksp
+		hsp = move*walksp + gunKickX;
+	}
+	else if (abs(hsp) >= abs(move*walksp) && sign(hsp) == sign(move))
+	{
+		// If we're moving slower than our walkspeed and move in is the opposite direction
+		hsp = hsp + (move*walksp) + gunKickX;
+	}
+	else
+	{
+		hsp = hsp + move*walksp + gunKickX;
+	}
+	
+	// Set max hsp in either direction
+	if (hsp > 10) hsp = 10;
+	if (hsp < -10) hsp = -10;
+}	
+else
+{
+	hsp = (move * walksp) + gunKickX;
+}
 gunKickX = 0;
 
 
 vsp = (vsp + grv) + gunKickY;
+vsp = max(-10, vsp); // Set maximum jetpack upward speed
 gunKickY = 0;
 
 // Jumping
@@ -90,7 +147,7 @@ if (aimSide != 0)
 	image_xscale = aimSide;
 }
 
-if (!place_meeting(x, y+1, oWall)) // If player is in the air
+if (inTheAir) // If player is in the air
 {
 	sprite_index = sPlayerA;
 	image_speed = 0;

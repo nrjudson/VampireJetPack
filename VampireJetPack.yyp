@@ -263,11 +263,35 @@
             }
         },
         {
+            "Key": "4dc65566-336a-4cce-a9e2-9a961795721e",
+            "Value": {
+                "id": "3bed4111-0365-4724-a026-2169dc74ca14",
+                "resourcePath": "objects\\oBloodBullet\\oBloodBullet.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "4f74e683-cc12-4ed5-bb2a-23897513426e",
             "Value": {
                 "id": "2c8ab1b0-a901-4a05-9f0c-97ea91c49cf5",
                 "resourcePath": "sprites\\sPlayerR\\sPlayerR.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "50356879-5b2f-48c9-a764-2f0641d24bf8",
+            "Value": {
+                "id": "efa12119-77b8-4186-8684-924b75022cd5",
+                "resourcePath": "objects\\oJetPackPickup\\oJetPackPickup.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "573780e4-bf55-4731-994b-7499883e16a3",
+            "Value": {
+                "id": "fb67d159-103a-44a7-9e8c-68d4d2429435",
+                "resourcePath": "objects\\oDoor\\oDoor.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -311,6 +335,14 @@
             }
         },
         {
+            "Key": "6654bd29-18e7-4994-9e7d-ec3e3a8c1989",
+            "Value": {
+                "id": "9b4187dd-afe8-4121-a592-846bc23dd9c4",
+                "resourcePath": "sprites\\sDoor\\sDoor.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "68151922-d97b-4d0d-a27e-5aa3da7dc80a",
             "Value": {
                 "id": "4d916a06-209a-49f4-bb79-d7dc7cf7ae3c",
@@ -332,6 +364,22 @@
                 "id": "dd98cd4f-ade0-4b87-a853-d433a50ccad2",
                 "resourcePath": "sprites\\sEBullet\\sEBullet.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "6baae301-23ad-464b-a245-8ce82f955bdb",
+            "Value": {
+                "id": "7eae5f0b-d596-4b9d-b484-6cc066dcbb03",
+                "resourcePath": "objects\\oBloodSpark\\oBloodSpark.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "70ee8017-6037-42e9-bcf5-94a0ecd33a03",
+            "Value": {
+                "id": "0a37aa2f-cdaa-488d-9f14-0b336eb79d1c",
+                "resourcePath": "rooms\\r5\\r5.yy",
+                "resourceType": "GMRoom"
             }
         },
         {
@@ -447,6 +495,14 @@
             }
         },
         {
+            "Key": "9ca21b06-c92a-40e7-a23b-f9ccdfb2c28e",
+            "Value": {
+                "id": "9e4d97b2-e410-422e-bc19-c81898740dd9",
+                "resourcePath": "sprites\\sBloodSpark\\sBloodSpark.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "9df6a38e-b0c2-4a76-a1f9-594255196f2a",
             "Value": {
                 "id": "05c31d05-e84b-4684-9bc7-80fc46511aeb",
@@ -491,6 +547,14 @@
             "Value": {
                 "id": "11b2f8ab-d782-4af2-92e6-1c79d687403e",
                 "resourcePath": "objects\\oPlayer\\oPlayer.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "b9501f52-bafa-48ff-bebe-5733e0cb4f78",
+            "Value": {
+                "id": "d4f3ecd5-d498-4e4b-a85a-c2f014f1c666",
+                "resourcePath": "objects\\oWallInvis\\oWallInvis.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -687,6 +751,14 @@
             }
         },
         {
+            "Key": "ed50e2aa-9d10-4452-96c4-ea164e5248bd",
+            "Value": {
+                "id": "ee0212b2-e1aa-4fef-8c4f-dd865e477802",
+                "resourcePath": "objects\\oDoorSwitch\\oDoorSwitch.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "edc1a555-3333-4ba5-bd4c-fe70c020cbb1",
             "Value": {
                 "id": "1f262801-75fe-4aa0-a565-c034f234dffa",
@@ -708,6 +780,22 @@
                 "id": "81e631e4-c614-4757-ab21-0b146f41f72e",
                 "resourcePath": "objects\\oWall\\oWall.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "f7b410a2-7ffd-4df1-874e-6b404b0b113f",
+            "Value": {
+                "id": "551a4125-1ef0-4c6d-aaf3-286a30e184fe",
+                "resourcePath": "rooms\\r4\\r4.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
+            "Key": "fae01e5f-fd2e-47e8-a075-41b4ea7a5b79",
+            "Value": {
+                "id": "b846e0c2-3526-4ac7-b734-5cc99a932e1e",
+                "resourcePath": "sprites\\sBloodBullet\\sBloodBullet.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
