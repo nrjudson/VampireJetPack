@@ -176,11 +176,24 @@ else // Player is on the ground
 	canJump = 10; // 10 frames left to jump
 	if (sprite_index == sPlayerA) 
 	{
-		// if we were just in the air, then play a sfx now that we landed
-		audio_sound_pitch(snLanding, choose(0.8, 1.0, 1.2)); // adjust pitch randomly slightly
-		audio_play_sound(snLanding, 10, false);
+		
 		// Make some dust appear under the player when they land
-		repeat(5)
+		var dustBits = 5;
+		if (key_down)
+		{
+			// if we were just in the air, then play a sfx now that we landed
+			audio_sound_pitch(snLanding, choose(0.4, 0.5, 0.6)); // adjust pitch randomly slightly
+			audio_play_sound(snLanding, 10, false);
+			dustBits = 25;
+		}
+		else
+		{
+			// if we were just in the air, then play a sfx now that we landed
+			audio_sound_pitch(snLanding, choose(0.8, 1.0, 1.2)); // adjust pitch randomly slightly
+			audio_play_sound(snLanding, 10, false);
+			dustBits = 5;
+		}
+		repeat(dustBits)
 		{
 			with (instance_create_layer(x, bbox_bottom, "Bullets", oDust))
 			{
