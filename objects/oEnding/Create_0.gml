@@ -11,9 +11,9 @@ if (global.hasGun && global.kills > 0)
 	endText[1] = "Even though he drank (and used) the blood and bones of " + string(global.kills) + " Total Retribution, Inc. employees,";
 	endText[2] = "He is still hungry.";
 	endText[3] = "As he was... since time immemorial.";
-	endText[4] = "The curse for accepting the jetpack, was the unending hunger.";
+	endText[4] = "The curse of the vampire jetpack king, is the unending hunger.";
 	endText[5] = "--- Or so he thought...";
-	endText[6] = "Actually he's just a dude that just escaped from a mental asylum.";
+	//endText[6] = "Actually he's just a dude that just escaped from a mental asylum.";
 }
 else 
 {
