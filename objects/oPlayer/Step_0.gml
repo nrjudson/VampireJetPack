@@ -11,6 +11,7 @@ if (has_control)
 	// Get player input
 	key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
 	key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
+	key_down = keyboard_check(vk_down) || keyboard_check(ord("S"));
 	key_jump = keyboard_check_pressed(vk_space);
 
 	if (key_left || key_right || key_jump)
@@ -39,9 +40,13 @@ else
 
 // Calculate movement
 var move = key_right - key_left;
+//if (key_down)
+//	move = 0;
 
 var inTheAir = !place_meeting(x, y+1, oWall);
 
+// In the air vertical movement (after getting jetpack)
+//if (global.hasJetpack && inTheAir)
 if (inTheAir)
 {
 	//if (move != 0)
@@ -55,7 +60,11 @@ if (inTheAir)
 	//	}
 	//}
 	
-	if (move == 0)
+	if (key_down)
+	{
+		hsp = 0;	
+	}
+	else if (move == 0)
 	{
 		hsp = hsp + gunKickX;
 	}
@@ -92,7 +101,13 @@ if (inTheAir)
 	// Set max hsp in either direction
 	if (hsp > 10) hsp = 10;
 	if (hsp < -10) hsp = -10;
-}	
+}
+// In the air vertical movement (before getting jetpack)
+//else if (!global.hasJetpack && inTheAir) 
+//{
+//	hsp = (move * walksp) + gunKickX;
+//}
+// On the ground
 else
 {
 	hsp = (move * walksp) + gunKickX;

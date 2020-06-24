@@ -327,6 +327,14 @@
             }
         },
         {
+            "Key": "64120aef-c360-483b-aa84-44fce627e614",
+            "Value": {
+                "id": "11833a12-61f6-4919-848b-f8e4091fa1bc",
+                "resourcePath": "objects\\oBGM\\oBGM.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "64f87007-1e72-4225-a5a9-0d4687358681",
             "Value": {
                 "id": "17b1acf4-bb21-44b5-bab3-1e2a9d6042f8",
@@ -388,6 +396,14 @@
                 "id": "a3a9d045-6af5-4e24-9434-cd2350edee75",
                 "resourcePath": "sprites\\sPlayer\\sPlayer.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "73ae930c-817a-4410-a0de-4c767ae8a30a",
+            "Value": {
+                "id": "99d4166a-a35a-4d4c-a971-8eec29194b08",
+                "resourcePath": "sounds\\supertramp_rudy\\supertramp_rudy.yy",
+                "resourceType": "GMSound"
             }
         },
         {

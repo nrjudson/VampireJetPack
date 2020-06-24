@@ -5,15 +5,15 @@ gunSprite = layer_sprite_get_id("TitleAssets", "gGun");
 // If we have the gun and killed at least one dude...
 if (global.hasGun && global.kills > 0)
 {
-	endText[0] = "And on this day our hero had slain " + string(global.kills) + " people.";
+	endText[0] = "Finally, Vorpeth, our Villain, is free."//+ string(global.kills) + " people.";
 	if (global.kills == 1)
 		endText[0] = "And on this day our hero killed a guy for no reason.";
-	endText[1] = "But some of those people had guns too, so...";
-	endText[2] = "He was probably saving the world or something.";
-	endText[3] = "Regardless, he was arrested 2 days later and spent the rest of his life in prison.";
-	endText[4] = "The defense team tried to argue that the sexy recoil effects and hit flashes were to blame\nbut to no avail.";
-	endText[5] = "The park ranger would later state she was \"not angry, just disappointed\"";
-	endText[6] = "The end.";
+	endText[1] = "Even though he drank (and used) the blood and bones of " + string(global.kills) + " Total Retribution, Inc. employees,";
+	endText[2] = "He is still hungry.";
+	endText[3] = "As he was... since time immemorial.";
+	endText[4] = "The curse for accepting the jetpack, was the unending hunger.";
+	endText[5] = "--- Or so he thought...";
+	endText[6] = "Actually he's just a dude that just escaped from a mental asylum.";
 }
 else 
 {
