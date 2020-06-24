@@ -2,7 +2,7 @@
     "id": "4787f0dc-ffa2-4552-815d-7088aca1994c",
     "modelName": "GMSprite",
     "mvc": "1.12",
-    "name": "sprite19",
+    "name": "sCrate",
     "For3D": false,
     "HTile": false,
     "VTile": false,

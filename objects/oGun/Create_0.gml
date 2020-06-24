@@ -2,6 +2,7 @@
 // You can write your code in this editor
 
 initFiringDelay = 45;
+initSlashDelay = 20;
 firingDelay = 0; // Timer for how many frames between bullets
 recoil = 0;      // Timer for how far the gun is moving
 

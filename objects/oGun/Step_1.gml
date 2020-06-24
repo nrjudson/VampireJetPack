@@ -32,6 +32,7 @@ recoil = max(0, recoil - 1);
 if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 	&& global.gunBlood >= bloodUsedPerShot && firingDelay <= 0 )
 {
+	// BLOOD SHOT ATTACK
 	firingDelay = initFiringDelay; // Reset the number of frames to delay shooting again
 	global.gunBlood -= bloodUsedPerShot;
 	recoil = 4;
@@ -55,6 +56,36 @@ if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 	{
 		gunKickX = lengthdir_x(1, other.image_angle - 180);
 		gunKickY = lengthdir_y(1, other.image_angle - 180);
+	}
+}
+// Claw attack on click if out of blood
+else if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
+	&& firingDelay <= 0 )
+{
+	// Again, this is CLAW ATTACK
+	firingDelay = initSlashDelay; // Reset the number of frames to delay shooting again
+	
+	ScreenShake(4, 6);
+	
+	audio_sound_pitch(snDeath, choose(1.2, 1.35, 1.5));
+	audio_play_sound(snDeath, 5, false);
+	
+	// Create the bullet in the Bullets layer
+	with (instance_create_layer(x, y, "Bullets", oSlash))
+	{
+		direction = other.image_angle;
+		// Set the claw attack to stay in front of the player's current direction
+		offsetX = lengthdir_x(32, direction);
+		offsetY = lengthdir_y(32, direction);
+		x += offsetX;
+		y += offsetY;
+		image_angle = direction;
+		image_xscale *= -1; // I drew the sprite backwards
+		// Flip the slash over if it's pointed to the left
+		if (image_angle > 90 && image_angle < 270)
+			image_yscale = -1;
+		else
+			image_yscale = 1;
 	}
 }
 

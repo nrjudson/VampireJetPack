@@ -57,12 +57,46 @@ if (inTheAir)
 	// Process keyboard movements
 	if (key_down)
 	{
-		// Pressing down always means slow down
-		// And if we're close enough to 0, just go to zero
-		if (abs(hsp) - walksp <= 0)
-			hsp = 0;
+		if (move != 0)
+		{
+			// Holding S and A or D will result in specific movement
+			if (!movingFasterThanRunning)
+			{
+				proposedHsp = walksp * move;
+				if (abs(proposedHsp) - (/*2**/walksp) < 0)
+				{
+					// Move close to walksp specifically
+					hsp = proposedHsp;
+				}
+				else
+				{
+					// Add to the speed if you're slower than max speed
+					hsp += walksp * move;
+					if (hsp > maxsp)
+						hsp = maxsp;
+					else if (hsp < -maxsp)
+						hsp = -maxsp;
+				}
+			}
+			else if (sign(hsp) != move)
+			{
+				// Add to the speed if it's on the opposite direction of movement
+				hsp += walksp * move;
+			}
+			else
+			{
+				// If it's in the same direction, do nothing
+			}
+		}
 		else
-			hsp += walksp * -sign(hsp);
+		{
+			// Pressing down means slow down if you're only pressing that.
+			// And if we're close enough to 0, just go to zero
+			if (abs(hsp) - walksp <= 0)
+				hsp = 0;
+			else
+				hsp += walksp * -sign(hsp);
+		}
 	}
 	else if (move == 0)
 	{
