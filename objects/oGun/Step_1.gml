@@ -58,8 +58,9 @@ if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 		gunKickY = lengthdir_y(1, other.image_angle - 180);
 	}
 }
-// Claw attack on click if out of blood
-else if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
+// Claw attack on shift (always) or click (if out of blood)
+else if ((keyboard_check(vk_shift) || /*missing gamepad button*/
+	((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb)) && global.gunBlood >= bloodUsedPerShot))
 	&& firingDelay <= 0 )
 {
 	// Again, this is CLAW ATTACK
@@ -81,11 +82,13 @@ else if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 		y += offsetY;
 		image_angle = direction;
 		image_xscale *= -1; // I drew the sprite backwards
-		// Flip the slash over if it's pointed to the left
-		if (image_angle > 90 && image_angle < 270)
-			image_yscale = -1;
-		else
-			image_yscale = 1;
+		var multiplier = choose(-1, 1);
+		image_yscale *= multiplier;
+		//// Flip the slash over if it's pointed to the left
+		//if (image_angle > 90 && image_angle < 270)
+		//	image_yscale = -1;
+		//else
+		//	image_yscale = 1;
 	}
 }
 
