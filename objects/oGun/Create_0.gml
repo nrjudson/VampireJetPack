@@ -11,10 +11,11 @@ controllerAngle = 0;
 // Use blood for ammo
 //global.gunBlood;
 bloodUsedPerShot = 50;
+bloodUsedPerBigShot = 50;
 //maxBlood = 500;
 //maxBlood = 100;
 //ammo = 100;
-bloodUsedPerFrameJetpack = 1;
+bloodUsedPerFrameJetpack = 3;
 
 if (global.hasGun == false)
 	instance_destroy();

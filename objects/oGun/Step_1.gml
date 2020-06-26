@@ -107,7 +107,7 @@ if (global.hasJetpack && (mouse_check_button(mb_right) || gamepad_button_check(0
 		// Because of the WITH statement, everything in here is referring to the bullet
 		// (except other, that's the gun)
 		spd = 15;
-		direction = other.image_angle;// + random_range(-3, 3); // Give the bullets some spread.
+		direction = other.image_angle + random_range(-3, 3); // Give the bullets some spread.
 		image_angle = direction;
 	}
 }

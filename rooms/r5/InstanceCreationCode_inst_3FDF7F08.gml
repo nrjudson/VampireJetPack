@@ -1,1 +1,1 @@
-target = rEnding;
+target = r6;
