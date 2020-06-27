@@ -175,6 +175,14 @@
             }
         },
         {
+            "Key": "2e3d990c-4171-4a15-bdeb-068a66530758",
+            "Value": {
+                "id": "cf30b768-6f64-43bc-b3aa-5c0e7bf02df6",
+                "resourcePath": "objects\\oBloodBigShotSpark\\oBloodBigShotSpark.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "2e83e158-4bf0-4a9b-85d7-617bea6a89a2",
             "Value": {
                 "id": "6c43796b-e7e6-4df5-979d-941cf1655005",
@@ -415,6 +423,14 @@
             }
         },
         {
+            "Key": "71bd7656-22ef-4014-9a29-ac020015bf62",
+            "Value": {
+                "id": "460781ef-2b12-4365-ac5a-8d733f9ce7bc",
+                "resourcePath": "objects\\oBloodBigShot\\oBloodBigShot.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "720a9883-38ef-4685-8bda-0053eaab508c",
             "Value": {
                 "id": "90b53dc1-1fb9-4578-aa8a-57668389a3a7",
@@ -522,7 +538,7 @@
             "Key": "89b4ef22-75ad-4815-8361-3e64aa14e87a",
             "Value": {
                 "id": "2be325d5-3b48-4aae-934e-9a05e600b7c2",
-                "resourcePath": "rooms\\r6\\r6.yy",
+                "resourcePath": "rooms\\r7\\r7.yy",
                 "resourceType": "GMRoom"
             }
         },
@@ -559,6 +575,14 @@
             }
         },
         {
+            "Key": "9db83b8e-b6f5-445a-8566-6d97e903e987",
+            "Value": {
+                "id": "9345f728-0c5e-469d-aa4a-168ea8786cd2",
+                "resourcePath": "sprites\\sBloodBigShotSpark\\sBloodBigShotSpark.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "9df6a38e-b0c2-4a76-a1f9-594255196f2a",
             "Value": {
                 "id": "05c31d05-e84b-4684-9bc7-80fc46511aeb",
@@ -580,6 +604,14 @@
                 "id": "89a891dd-702b-4d4e-982a-f3fe9045ffad",
                 "resourcePath": "sprites\\sTitle\\sTitle.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "a480eeed-8b19-4fd8-9574-0270d19e4036",
+            "Value": {
+                "id": "e694e6e4-6e1c-44f7-a73a-810c3b7ab05b",
+                "resourcePath": "objects\\oBigShotPickup\\oBigShotPickup.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -620,6 +652,14 @@
                 "id": "9633b9f7-8e39-4565-958b-6aaff8fd22bb",
                 "resourcePath": "sounds\\snFoot4\\snFoot4.yy",
                 "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "bcd487d4-974b-4d33-b4c6-a390e4fe845b",
+            "Value": {
+                "id": "b39ec43b-f089-4360-80ef-7685c9bdd0a3",
+                "resourcePath": "rooms\\r6\\r6.yy",
+                "resourceType": "GMRoom"
             }
         },
         {
@@ -796,6 +836,14 @@
                 "id": "877ea717-d21a-4a8d-9c70-37ca8e11f702",
                 "resourcePath": "objects\\oBullet\\oBullet.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "eb7661a8-ddbb-4c23-b389-ea427aecf4bc",
+            "Value": {
+                "id": "0352b3cd-b72d-428b-8dd9-c6054b385cea",
+                "resourcePath": "sounds\\supertramp_asylum\\supertramp_asylum.yy",
+                "resourceType": "GMSound"
             }
         },
         {

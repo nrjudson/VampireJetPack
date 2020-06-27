@@ -28,8 +28,34 @@ firingDelay = max(0, firingDelay - 1);
 // Reduce recoil by 1 or keep it at 0
 recoil = max(0, recoil - 1);
 
-// Fire the gun on mouse click
+// Fire a super shot
 if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
+	&& global.gunBlood >= bloodUsedPerShot && firingDelay <= 0 && global.hasBigShot)
+{
+	firingDelay = initFiringDelay; // Reset the number of frames to delay shooting again
+	global.gunBlood -= bloodUsedPerShot;
+	recoil = 8;
+	ScreenShake(4, 10);
+	
+	audio_sound_pitch(snShot, choose(0.4, 0.5, 0.6));
+	audio_play_sound(snShot, 5, false);
+	
+	// Create the big shot in the Bullets layer
+	with (instance_create_layer(x, y, "Bullets", oBloodBigShot))
+	{
+		spd = 18;
+		direction = other.image_angle;
+		image_angle = direction;
+	}
+	
+	with (oPlayer)
+	{
+		gunKickX = lengthdir_x(1, other.image_angle - 180);
+		gunKickY = lengthdir_y(1, other.image_angle - 180);
+	}
+}
+// Fire the gun on mouse click
+else if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 	&& global.gunBlood >= bloodUsedPerShot && firingDelay <= 0 )
 {
 	// BLOOD SHOT ATTACK
@@ -84,14 +110,9 @@ else if ((keyboard_check(vk_shift) || /*missing gamepad button*/
 		image_xscale *= -1; // I drew the sprite backwards
 		var multiplier = choose(-1, 1);
 		image_yscale *= multiplier;
-		//// Flip the slash over if it's pointed to the left
-		//if (image_angle > 90 && image_angle < 270)
-		//	image_yscale = -1;
-		//else
-		//	image_yscale = 1;
 	}
 }
-
+// JETPACK
 if (global.hasJetpack && (mouse_check_button(mb_right) || gamepad_button_check(0, gp_shoulderlb))
 	&& global.gunBlood >= bloodUsedPerFrameJetpack)
 {

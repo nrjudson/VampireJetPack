@@ -14,6 +14,7 @@ global.deaths = 0;
 
 global.hasGun = false;
 global.hasJetpack = false;
+global.hasBigShot = false;
 
 global.gunBlood = 400;
 global.maxBlood = 500;
@@ -36,6 +37,11 @@ global.pe1 = part_emitter_create(global.pSystem);
 
 // MUSIC
 var pitch = choose(0.6, 0.85, 1.0, 1.15, 1.3, 1.45, 1.6);
-audio_sound_pitch(supertramp_rudy, pitch);
-audio_play_sound(supertramp_rudy, 1000, false);
-alarm[0] = (1/pitch) * 60*((6*60) + 28); // 6:24 song (4 second break)
+//audio_sound_pitch(supertramp_rudy, pitch);
+//audio_play_sound(supertramp_rudy, 1000, false);
+var music = choose(supertramp_asylum);
+audio_sound_pitch(music, pitch);
+audio_play_sound(music, 1000, false);
+alarm[0] = (1/pitch) * 60*((6*60) + 48); // 6:44 song (4 second break) (Asylum)
+
+//alarm[0] = (1/pitch) * 60*((6*60) + 28); // 6:24 song (4 second break) (Rudy)
