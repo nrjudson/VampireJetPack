@@ -8,3 +8,4 @@ text_current = ""; // The currently drawn screen
 w = 0;
 h = 0;
 border = 10;
+frameSinceFinishedDrawing = 0;

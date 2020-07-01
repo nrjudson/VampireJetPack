@@ -25,7 +25,8 @@ if (has_control)
 		controller = 1;
 	}
 
-	if (gamepad_button_check_pressed(0, gp_shoulderlb))
+	if (gamepad_button_check_pressed(0, gp_shoulderl)
+		|| gamepad_axis_value(0, gp_axislv) < -.666)
 	{
 		controller = 1;
 		key_jump = 1;
@@ -41,8 +42,15 @@ else
 
 // Calculate movement
 var move = key_right - key_left; // -1 or 1
-//if (key_down) 
-//	move = 0; // ... or 0
+// For controller, make move 0 or 1 if it's very close
+if (move < 0.666 && move > 0)
+	move = 0;
+else if (move > -0.666 && move < 0)
+	move = 0;
+else if (move > 0.9666 && move < 1)
+	move = 1;
+else if (move < -0.9666 && move > -1)
+	move = -1;
 
 var inTheAir = !place_meeting(x, y+1, oWall);
 
@@ -78,7 +86,7 @@ if (inTheAir)
 						hsp = -maxsp;
 				}
 			}
-			else if (sign(hsp) != move)
+			else if (sign(hsp) != sign(move))
 			{
 				// Add to the speed if it's on the opposite direction of movement
 				hsp += walksp * move;
@@ -106,13 +114,13 @@ if (inTheAir)
 		else
 			hsp += airResistSp * -sign(hsp);
 	}
-	else if (sign(hsp) != move)
+	else if (sign(hsp) != sign(move))
 	{
 		// We're trying to move in the opposite direction
 		// Slow down mid-air- don't change direction instantly
 		hsp += (walksp*move);
 	}
-	else if (sign(hsp) == move && !movingFasterThanRunning)
+	else if (sign(hsp) == sign(move) && !movingFasterThanRunning)
 	{
 		// We're slower than our max running speed
 		// And we're trying to go faster in the same direction

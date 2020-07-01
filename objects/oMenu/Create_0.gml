@@ -14,6 +14,9 @@ menu_item_height = font_get_size(fMenu);
 menu_committed = -1; // The menu action we select
 menu_control = true;
 
+stick_control_cooldown = 0;
+stick_control_initial_cooldown = 20;
+
 menu[2] = "New Game";
 menu[1] = "Continue";
 menu[0] = "Quit";

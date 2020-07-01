@@ -34,18 +34,20 @@ if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 {
 	firingDelay = initFiringDelay; // Reset the number of frames to delay shooting again
 	global.gunBlood -= bloodUsedPerShot;
-	recoil = 8;
+	recoil = 4;
 	ScreenShake(4, 10);
-	
 	audio_sound_pitch(snShot, choose(0.4, 0.5, 0.6));
 	audio_play_sound(snShot, 5, false);
 	
-	// Create the big shot in the Bullets layer
-	with (instance_create_layer(x, y, "Bullets", oBloodBigShot))
+	repeat(6)
 	{
-		spd = 18;
-		direction = other.image_angle;
-		image_angle = direction;
+		// Create the big shots in the Bullets layer
+		with (instance_create_layer(x, y, "Bullets", oBloodBigShot))
+		{
+			spd = 18;
+			direction = other.image_angle + random_range(-13, 13);;
+			image_angle = direction;
+		}
 	}
 	
 	with (oPlayer)
@@ -54,14 +56,14 @@ if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 		gunKickY = lengthdir_y(10, other.image_angle - 180);
 	}
 }
-// Fire the gun on mouse click
+// Fire a regular shot
 else if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 	&& global.gunBlood >= bloodUsedPerShot && firingDelay <= 0 )
 {
 	// BLOOD SHOT ATTACK
 	firingDelay = initFiringDelay; // Reset the number of frames to delay shooting again
 	global.gunBlood -= bloodUsedPerShot;
-	recoil = 4;
+	recoil = 2;
 	
 	ScreenShake(2, 10);
 	
@@ -85,9 +87,12 @@ else if ((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb))
 	}
 }
 // Claw attack on shift (always) or click (if out of blood)
-else if ((keyboard_check(vk_shift) || /*missing gamepad button*/
-	((mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb)) && global.gunBlood >= bloodUsedPerShot))
-	&& firingDelay <= 0 )
+else if (firingDelay <= 0 
+		&& (keyboard_check(vk_shift) || gamepad_button_check(0, gp_shoulderr)
+			|| (mouse_check_button(mb_left) && global.gunBlood < bloodUsedPerShot)
+			|| (mouse_check_button(mb_right) && global.gunBlood < bloodUsedPerFrameJetpack)
+			|| (gamepad_button_check(0, gp_shoulderrb) && global.gunBlood < bloodUsedPerShot)
+			|| (gamepad_button_check(0, gp_shoulderlb) && global.gunBlood < bloodUsedPerFrameJetpack)))
 {
 	// Again, this is CLAW ATTACK
 	firingDelay = initSlashDelay; // Reset the number of frames to delay shooting again
@@ -112,6 +117,7 @@ else if ((keyboard_check(vk_shift) || /*missing gamepad button*/
 		image_yscale *= multiplier;
 	}
 }
+
 // JETPACK
 if (global.hasJetpack && (mouse_check_button(mb_right) || gamepad_button_check(0, gp_shoulderlb))
 	&& global.gunBlood >= bloodUsedPerFrameJetpack)

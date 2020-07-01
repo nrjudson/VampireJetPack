@@ -44,7 +44,9 @@ var player = instance_find(oPlayer, 0);
 if (point_in_circle(player.x, player.y, x, y, 64) && !beingEaten && !eaten && !player.eating)
 {
 	nearby = true;
-	if (keyboard_check_pressed(ord("S")))
+	if (keyboard_check_pressed(ord("S"))
+		|| gamepad_axis_value(0, gp_axislv) > 0.4
+		|| gamepad_button_check_pressed(0, gp_face2))
 	{
 		beingEaten = true;		
 		player.eating = true;
@@ -65,7 +67,6 @@ if (beingEaten)
 	{
 		beingEaten = false;
 		eaten = true;
-		//var player = instance_find(oPlayer, 0);
 		player.eating = false;
 		sprite_index = sEnemyDEaten;
 		global.gunBlood = min(global.maxBlood, global.gunBlood+100);
