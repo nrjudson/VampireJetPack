@@ -30,14 +30,18 @@ for (var i = 0; i < menu_items; i++)
 	draw_text(xx, yy, txt);
 }
 
-// Draw Title
-DrawSetText(c_white, fTitle, fa_left, fa_top);
-draw_set_color(c_white);
-draw_text(107,66,"Vampire Jetpack");
+// Draw black outlines of title
+DrawSetText(c_black, fTitle, fa_left, fa_top);
+draw_text(103,66,"Vampire Jetpack");
+DrawSetText(c_black, fTitle, fa_left, fa_top);
+draw_text(111,66,"Vampire Jetpack");
+DrawSetText(c_black, fTitle, fa_left, fa_top);
+draw_text(107,70,"Vampire Jetpack");
+DrawSetText(c_black, fTitle, fa_left, fa_top);
+draw_text(107,62,"Vampire Jetpack");
 
-// Draw Subtext title
+// Draw title in white
 DrawSetText(c_white, fTitle, fa_left, fa_top);
-draw_set_color(c_white);
 draw_text(107,66,"Vampire Jetpack");
 
 draw_set_color(c_black);

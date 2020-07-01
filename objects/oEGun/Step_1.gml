@@ -33,8 +33,8 @@ if (instance_exists(oPlayer))
 				{
 					// Because of the WITH statement, everything in here is referring to the bullet
 					// (except other, that's the gun)
-					spd = 6;
-					direction = other.image_angle + random_range(-3, 3); // Give the bullets some spread.
+					spd = 7;
+					direction = other.image_angle + random_range(-5, 5); // Give the bullets some spread.
 					image_angle = direction;
 				}
 			}

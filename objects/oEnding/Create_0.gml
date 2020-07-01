@@ -1,31 +1,27 @@
 /// @description 
 
-gunSprite = layer_sprite_get_id("TitleAssets", "gGun");
+//gunSprite = layer_sprite_get_id("TitleAssets", "gGun");
 
-// If we have the gun and killed at least one dude...
-if (global.hasGun && global.kills > 0)
-{
-	endText[0] = "Finally, Vorpeth, our Villain, is free."//+ string(global.kills) + " people.";
-	if (global.kills == 1)
-		endText[0] = "And on this day our hero killed a guy for no reason.";
-	endText[1] = "Even though he drank (and used) the blood and bones of " + string(global.kills) + " Total Retribution, Inc. employees,";
-	endText[2] = "He is still hungry.";
-	endText[3] = "As he was... since time immemorial.";
-	endText[4] = "The curse of the vampire jetpack king, is the unending hunger.";
-	endText[5] = "--- Or so he thought...";
-	//endText[6] = "Actually he's just a dude that just escaped from a mental asylum.";
-}
-else 
-{
-	layer_sprite_destroy(gunSprite);
-	endText[0] = "And on this day our hero had a wonderful, serene walk through the national park\nand didn't murder anyone.";
-	endText[1] = "They reported a discarded firearm to the local authorities\nand were thanked profusely for assisting in ongoing crimes.";
-	endText[2] = "And all it took was behavior that outside of a videogame context\nnone would hope is completely normal.";
-	endText[3] = "Who would have thought?";
-	endText[4] = "The end.";
-}
+endText[0] = "Lynden Times, June 6, 1966."//+ string(global.kills) + " people.";
+endText[1] = "TOTAL ANNIHILATION AT SAINT MARY'S MENTAL HOSPITAL";
+endText[2] = "Esteemed mental hospital now a bullet-ridden warzone after inmate goes on rampage.";
+endText[3] = "Fredrick Hesberger, 36, the escaped inmate, armed and highly dangerous...";
+endText[4] = "...went on a rampage and murdered " + string(global.kills) + " staff and other inamates...";
+endText[5] = "...after finding one of the security guard's guns in the courtyard.";
+endText[6] = "Fredrick, who's room was full of bloody scribbles of a \"Vorpeth\" demon king and...";
+endText[7] = "\"opening a river of blood thus to begin Judgement Day\"...";
+endText[8] = "After discovering the gun, Jimmy promptly went about shooting everyone,";
+endText[9] = "including patients, staff, and the security team...";
+endText[10] = "where he found a jetpack and was able to blast out of the tower,";
+endText[11] = "presumably for dramatic effect.";
+endText[12] = "\"The worst part is\", one survivor states, \"he would smile and eat people...";
+endText[13] = "\"and rub his gun in blood and organs. Oh his laughter was awful.\"";
+endText[14] = "One thing is for sure, no one is safe until this lunatic is captured.";
+endText[15] = "..."
+endText[16] = "You died " + string(global.deaths) + " times, and killed " + string(global.kills);
+endText[17] = "You monster.";
 
-spd = 0.5;
+spd = 0.3;
 letters = 0;
 currentLine = 0;
 length = string_length(endText[currentLine]);

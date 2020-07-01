@@ -8,7 +8,7 @@ letters += spd;
 text = string_copy(endText[currentLine], 1, floor(letters));
 
 // If the text completes a line and a key is pressed
-if (letters >= length && keyboard_check_pressed(vk_anykey))
+if (letters >= length && (keyboard_check_pressed(vk_anykey) || mouse_check_button(mb_left)))
 {
 	// If it's the last line. Restart the game.
 	if (currentLine+1 == array_length_1d(endText))	
